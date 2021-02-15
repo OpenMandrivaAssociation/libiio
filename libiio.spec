@@ -73,6 +73,10 @@ Python 3 bindings for Industrial IO
 sed -i 's/${LIBIIO_VERSION_MAJOR}-doc//' CMakeLists.txt
 
 %build
+%ifarch %{ix86} %{x86_64}
+export CC=gcc
+export CXX=g++
+%endif
 %cmake -DPYTHON_BINDINGS=on -DWITH_DOC=on .
 %make_build
 
