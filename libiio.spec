@@ -18,6 +18,9 @@ BuildRequires: pkgconfig(libserialport)
 BuildRequires: libaio-devel
 BuildRequires: pkgconfig(libusb)
 BuildRequires: libxml2-devel
+BuildRequires: graphviz
+BuildRequires: pkgconfig(avahi-client)
+BuildRequires: git-core
 BuildRequires: python-devel
 BuildRequires: python-setuptools
 BuildRequires: python-sphinx
