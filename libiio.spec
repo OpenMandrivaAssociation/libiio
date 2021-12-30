@@ -3,8 +3,8 @@
 %define devname %mklibname -d iio
 
 Name:          libiio
-Version:       0.21
-Release:       4%{?dist}
+Version:       0.23
+Release:       1
 Summary:       Library for Industrial IO
 License:       LGPLv2
 URL:           https://analogdevicesinc.github.io/libiio/
@@ -103,4 +103,4 @@ export CXX=g++
 %files -n python-iio
 %{python_sitelib}/__pycache__/iio*
 %{python_sitelib}/iio*
-%{python_sitelib}/libiio*
+%{python_sitelib}/pylibiio*
