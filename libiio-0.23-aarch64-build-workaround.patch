@@ -1,0 +1,18 @@
+diff -up libiio-0.23/CMakeLists.txt.omv~ libiio-0.23/CMakeLists.txt
+--- libiio-0.23/CMakeLists.txt.omv~	2021-12-30 16:00:21.421862300 +0000
++++ libiio-0.23/CMakeLists.txt	2021-12-30 16:02:14.210833521 +0000
+@@ -310,8 +310,12 @@ if(WITH_NETWORK_BACKEND)
+ 			endif()
+ 		endif()
+ 
+-		check_c_source_compiles("#include <sys/eventfd.h>\nint main(void) { return eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK); }"
+-			WITH_NETWORK_EVENTFD)
++		# FIXME there is a weird problem causing a bogus
++		# "check_c_source_compiles undefined" error on aarch64
++		# Fortunately we know our eventfd() is good.
++		# check_c_source_compiles("#include <sys/eventfd.h>\nint main(void) { return eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK); }"
++		#	WITH_NETWORK_EVENTFD)
++		set(WITH_NETWORK_EVENTFD ON)
+ 		if (NOT WITH_NETWORK_EVENTFD)
+ 			check_c_source_compiles("#define _GNU_SOURCE=1\n#include <unistd.h>\n#include <fcntl.h>\nint main(void) { int fd[2]; return pipe2(fd, O_CLOEXEC | O_NONBLOCK); }"
+ 				HAS_PIPE2)

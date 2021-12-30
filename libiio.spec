@@ -9,6 +9,7 @@ Summary:       Library for Industrial IO
 License:       LGPLv2
 URL:           https://analogdevicesinc.github.io/libiio/
 Source0:       https://github.com/analogdevicesinc/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:		libiio-0.23-aarch64-build-workaround.patch
 
 BuildRequires: bison
 BuildRequires: cmake
