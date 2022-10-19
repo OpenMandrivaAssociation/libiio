@@ -3,16 +3,17 @@
 %define devname %mklibname -d iio
 
 Name:          libiio
-Version:       0.23
-Release:       2
+Version:       0.24
+Release:       1
 Summary:       Library for Industrial IO
 License:       LGPLv2
 URL:           https://analogdevicesinc.github.io/libiio/
-Source0:       https://github.com/analogdevicesinc/%{name}/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
-Patch0:		libiio-0.23-aarch64-build-workaround.patch
+Source0:       https://github.com/analogdevicesinc/libiio/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
+Patch0:        libiio-0.23-aarch64-build-workaround.patch
 
 BuildRequires: bison
 BuildRequires: cmake
+BuildRequires: ninja
 BuildRequires: doxygen
 BuildRequires: flex
 BuildRequires: pkgconfig(libserialport)
@@ -77,15 +78,16 @@ Python 3 bindings for Industrial IO
 sed -i 's/${LIBIIO_VERSION_MAJOR}-doc//' CMakeLists.txt
 
 %build
-%ifarch %{ix86} %{x86_64}
-export CC=gcc
-export CXX=g++
-%endif
-%cmake -DPYTHON_BINDINGS=on -DWITH_DOC=on .
-%make_build
+%cmake \
+	-DPYTHON_BINDINGS=on \
+	-DWITH_DOC=on \
+	-DUDEV_RULES_INSTALL_DIR=%{_udevrulesdir} \
+	. \
+	-G Ninja
+%ninja_build
 
 %install
-%make_install -C build
+%ninja_install -C build
 
 %files -n %{libname}
 %{_libdir}/%{name}.so.%{major}*
@@ -105,6 +107,5 @@ export CXX=g++
 %doc %{_docdir}/%{name}
 
 %files -n python-iio
-%{python_sitelib}/__pycache__/iio*
 %{python_sitelib}/iio*
 %{python_sitelib}/pylibiio*
