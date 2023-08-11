@@ -1,9 +1,10 @@
 %define major 0
-%define libname %mklibname iio %{major}
+%define oldlibname %mklibname iio 0
+%define libname %mklibname iio
 %define devname %mklibname -d iio
 
 Name:          libiio
-Version:       0.24
+Version:       0.25
 Release:       1
 Summary:       Library for Industrial IO
 License:       LGPLv2
@@ -49,6 +50,7 @@ Utilities for accessing IIO using libiio
 
 %package -n %{libname}
 Summary: Development package for %{name}
+%rename %{oldlibname}
 
 %description -n %{libname}
 Library for Industrial IO
