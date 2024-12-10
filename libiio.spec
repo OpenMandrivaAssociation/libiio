@@ -4,7 +4,7 @@
 %define devname %mklibname -d iio
 
 Name:          libiio
-Version:       0.25
+Version:       0.26
 Release:       1
 Summary:       Library for Industrial IO
 License:       LGPLv2
