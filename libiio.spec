@@ -5,9 +5,9 @@
 
 Name:          libiio
 Version:       0.26
-Release:       3
+Release:       4
 Summary:       Library for Industrial IO
-License:       LGPLv2
+License:       LGPL-2.1-or-later
 URL:           https://analogdevicesinc.github.io/libiio/
 Source0:       https://github.com/analogdevicesinc/libiio/archive/v%{version}.tar.gz#/%{name}-%{version}.tar.gz
 Patch0:        libiio-0.23-aarch64-build-workaround.patch
