@@ -5,7 +5,7 @@
 
 Name:          libiio
 Version:       0.26
-Release:       4
+Release:       5
 Summary:       Library for Industrial IO
 License:       LGPL-2.1-or-later
 URL:           https://analogdevicesinc.github.io/libiio/
@@ -24,10 +24,10 @@ BuildRequires: libxml2-devel
 BuildRequires: graphviz
 BuildRequires: pkgconfig(avahi-client)
 BuildRequires: git-core
-BuildRequires: python-devel
-BuildRequires: python-setuptools
-BuildRequires: python-sphinx
-BuildRequires: python-sphinx_rtd_theme
+BuildRequires: pkgconfig(python3)
+BuildRequires: python%{pyver}dist(setuptools)
+BuildRequires: python%{pyver}dist(sphinx)
+BuildRequires: python%{pyver}dist(sphinx-rtd-theme)
 
 %description
 Library for interfacing with Linux IIO devices
